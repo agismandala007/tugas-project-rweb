@@ -23,6 +23,33 @@ class Login extends CI_Controller{
             'email' => $this->input->post('inputEmail'),
             'password' => $this->input->post('inputPassword')
         );
+
+        $this->form_validation->set_rules('inputEmail', 'Email', 'required');
+        $this->form_validation->set_rules('inputPassword', 'Password', 'required');
+
+        if ($this->form_validation->run() != false) {
+            $data = $this->M_login->verify($akun['email'], $akun['password']);
+            if ($data) {
+                $this->session->set_userdata('id', $data['id']);
+                $this->session->set_userdata('email', $data['email']);
+                $this->session->set_userdata('tipe', $data['tipe']);
+
+                if($this->session->userdata('tipe') == 'dosen')
+                {
+                    redirect('HomeDosen');
+                }
+                elseif($this->session->userdata('tipe') == 'mahasiswa')
+                {
+                    redirect('HomeMahasiswa');
+                }
+                
+            } else {
+                $this->session->session_destroy();
+                echo "Gagal Login";
+            }
+        } else {
+            $this->load->view('view_login');
+        }
     }
 }
 

@@ -8,6 +8,6 @@ class M_registrasi extends CI_Model{
 
     function addAkun($data)
     {
-        $this->db->input('mahasiswa', $data);
+        $this->db->insert('mahasiswa', $data);
     }
 }

@@ -41,15 +41,17 @@
             <td>Nim</td>
             <td>Nama</td>
             <td>Dosen Pembimbing</td>
+            <td>Status</td>
         </tr>
         <?php
-        $i = 0;
+        $i = 1;
         foreach ($data as $row) { ?>
             <tr>
-                <td><?php echo $i + 1 ?>.</td>
+                <td><?php echo $i++ ?>.</td>
                 <td><?php echo $row->nim ?></td>
                 <td><?php echo $row->nama ?></td>
                 <td><?php echo $row->dosenPembimbing ?></td>
+                <td><?php echo $row->status ?></td>
             </tr>
         <?php } ?>
     </table>

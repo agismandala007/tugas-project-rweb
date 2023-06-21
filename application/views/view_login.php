@@ -11,7 +11,7 @@
 <body>
     <header class="px-3 py-2 border-bottom mb-3">
         <div class="container d-flex flex-wrap justify-content-center">
-
+            <a href="<?php echo base_url('home') ?>">Website</a>
             <div class="text-end">
                 <a class="btn btn-primary" href="<?php echo base_url('login/index'); ?>">Login</a>
                 <a class="btn btn-light text-dark me-2" href="<?php echo base_url('registrasi/index'); ?>">Register</a>
@@ -19,11 +19,14 @@
         </div>
     </header>
 
-    <?php echo form_open('login/validasi'); ?>
+    <?php echo validation_errors(); ?>
+    <?php echo form_open(base_url('login/validasi')); ?>
         <label for="inputEmail">Email</label><br>
         <input type="email" name="inputEmail"><br>
+
         <label for="inputPassword">Password</label><br>
         <input type="password" name="inputPassword"><br>
+
         <button type="submit">Login</button>
     <?php echo form_close(); ?>
 

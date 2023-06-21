@@ -13,7 +13,6 @@ class Registrasi extends CI_Controller{
     function index()
     {
         $data['data']= $this->M_registrasi->dosen();
-        // $data['dosen'] = $this->M_registrasi->dosen();
         $this->load->view('view_registrasi', $data);
     }
 
@@ -23,7 +22,10 @@ class Registrasi extends CI_Controller{
             'nim' => $this->input->post('inputNim'),
             'nama' => $this->input->post('inputNama'),
             'email' => $this->input->post('inputEmail'),
+            'dosenPembimbing' => $this->input->post('inputDosen'),
             'password' => $this->input->post('inputPassword')
         );
+
+        $this->M_registrasi->addAkun($akun);
     }
 }
