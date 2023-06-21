@@ -37,7 +37,8 @@ class Home extends CI_Controller {
 	public function cari()
 	{
 		$nama = $this->input->post('cariNama');
-		$this->M_home->getData($nama);
+		$data['data'] = $this->M_home->getData($nama);
+		$this->load->view('view_home', $data);
 	}
 
 

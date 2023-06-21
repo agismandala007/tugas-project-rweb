@@ -29,15 +29,12 @@
             <?php echo form_close(); ?>
 
             <div class="text-end">
-                <a class="btn btn-primary" href="login/index">Login</a>
-                <a class="btn btn-light text-dark me-2" href="register/index">Register</a>
+                <a class="btn btn-primary" href="<?php echo base_url('login/index'); ?>">Login</a>
+                <a class="btn btn-light text-dark me-2" href="<?php echo base_url('registrasi/index'); ?>">Register</a>
             </div>
         </div>
-
-
-
-
     </header>
+
     <table class="table">
         <tr class="table-info">
             <td>No.</td>
