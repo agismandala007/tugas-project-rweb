@@ -16,7 +16,7 @@
 <body>
 
     <header>
-        <p>Selamat Datang <?php echo $nama['nama']; ?></p>
+        <p><?php echo $nama['nama']; ?></p>
         <a href="<?php echo base_url('homeDosen/logout') ?>">Logout</a>
     </header>
 

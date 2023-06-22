@@ -12,15 +12,10 @@ class M_mahasiswa extends CI_Model
     {
         $this->db->insert('dokumen', array(
             'id_mhs' => $data['id'],
+            'date' => $data['date'],
             'nama' => $data['nama'],
             'tipe' => $data['type'],
             'data' => $data['data']
         ));
-    }
-
-    function getDoc ($data)
-    {
-        $query = $this->db->get_where('dokumen', array('id_mhs' => $data));
-        return $query->result();
     }
 }

@@ -6,9 +6,7 @@ class HomeDosen extends CI_Controller
     function __construct()
     {
         parent::__construct();
-
         $this->load->library('session');
-        $this->load->model('M_dosen');
 
         if($this->session->userdata('tipe') != 'dosen' && !empty($this->session->userdata()))
         {
@@ -17,6 +15,7 @@ class HomeDosen extends CI_Controller
         else
         {
             $this->load->database();
+            $this->load->model('M_dosen');
         }
     }
 

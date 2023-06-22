@@ -6,8 +6,7 @@ class HomeMahasiswa extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
-        $this->load->library('form_validation');
-        $this->load->model('M_mahasiswa');
+
         
         if($this->session->userdata('tipe') != 'mahasiswa' && !empty($this->session->userdata()))
         {
@@ -16,6 +15,9 @@ class HomeMahasiswa extends CI_Controller
         else
         {
             $this->load->database();
+            $this->load->library('form_validation');
+            $this->load->helper('date');
+            $this->load->model('M_mahasiswa');
         }
     }
 
@@ -29,12 +31,6 @@ class HomeMahasiswa extends CI_Controller
     {
         $data['mahasiswa'] = $this->M_mahasiswa->getNama($this->session->userdata('email'));
         $this->load->view('view_mahasiswa', $data);
-    }
-
-    function feedback ()
-    {
-        $data['dokumen'] = $this->M_mahasiswa->getDoc($this->session->userdata('id'));
-        $this->load->view('view_mahasiswa_feedback', $data);
     }
 
     function upload ()
@@ -58,6 +54,7 @@ class HomeMahasiswa extends CI_Controller
 
             $upload = array(
                 'id' => $id,
+                'date' => date('Y-m-d'),
                 'nama' => $data['file_name'],
                 'type' => $data['file_type'],
                 'data' => file_get_contents($data['full_path'])
@@ -65,6 +62,8 @@ class HomeMahasiswa extends CI_Controller
             
             $this->M_mahasiswa->uploadFile($upload);
         }
+        
+        $this->index();
     }
 }
 

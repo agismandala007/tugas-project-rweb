@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feedback</title>
+
+    <style>
+        tr, td{
+            border: 1px solid black;
+        }
+    </style>
+
 </head>
 <body>
     <header>
-        <p>Selamat Datang <?php echo $mahasiswa['nama']; ?></p>
+        <p><?php echo $mahasiswa['nama']; ?></p>
         <a href="<?php echo base_url('HomeMahasiswa/logout'); ?>"> logout</a>
     </header>
 
     <section>
         <ul>
             <li><a href="<?php echo base_url('HomeMahasiswa'); ?>">Upload</a></li>
-            <li><a href="<?php echo base_url('HomeMahasiswa/feedback'); ?>">Feedback</a></li>
+            <li><a href="<?php echo base_url('MahasiswaFeedback'); ?>">Feedback</a></li>
         </ul>
     </section>
 
@@ -23,19 +30,20 @@
     <table>
         <tr>
             <td>No.</td>
+            <td>Tanggal</td>
             <td>Nama</td>
             <td>File</td>
         </tr>
         <?php
-            $i=0; 
-            foreach($dokumen as $row)
+            $i=1; 
+            foreach($feedback as $row)
             { ?>
-
-            <td><?php $i++; ?></td>
-            <td><?php echo $row->nama; ?></td>
-            <td><?php echo $row->data; ?></td>
-
-
+            <tr>
+                <td><?php echo $i++ . "."; ?></td>
+                <td><?php echo $row->date; ?></td>
+                <td><?php echo $row->nama; ?></td>
+                <td><a href="<?php echo base_url('MahasiswaFeedback/downloadData') ?>">DownloadOK</a></td>
+            </tr>
         <?php } ?>
     </table>
 </body>

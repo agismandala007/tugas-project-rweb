@@ -8,14 +8,14 @@
 </head>
 <body>
     <header>
-        <p>Selamat Datang <?php echo $mahasiswa['nama']; ?></p>
+        <p><?php echo $mahasiswa['nama']; ?></p>
         <a href="<?php echo base_url('HomeMahasiswa/logout'); ?>"> logout</a>
     </header>
 
     <section>
         <ul>
             <li><a href="<?php echo base_url('HomeMahasiswa'); ?>">Upload</a></li>
-            <li><a href="<?php echo base_url('HomeMahasiswa/feedback'); ?>">Feedback</a></li>
+            <li><a href="<?php echo base_url('MahasiswaFeedback'); ?>">Feedback</a></li>
         </ul>
     </section>
 
