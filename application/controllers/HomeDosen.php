@@ -6,19 +6,29 @@ class HomeDosen extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->database();
+
         $this->load->library('session');
         $this->load->model('M_dosen');
 
-        if($this->session->userdata('tipe') != 'dosen')
+        if($this->session->userdata('tipe') != 'dosen' && !empty($this->session->userdata()))
         {
             redirect('home');
         }
+        else
+        {
+            $this->load->database();
+        }
+    }
+
+    function logout ()
+    {
+        session_destroy();
+        redirect('home');
     }
 
     function index()
     {
-        // echo $this->session->userdata('email');
+        $data['nama'] = $this->M_dosen->getNama($this->session->userdata('email'));
         $data['mahasiswa'] = $this->M_dosen->getMahasiswa($this->session->userdata('email'));
         $this->load->view('view_dosen', $data);
     }

@@ -7,6 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Selamat Datang Mahasiswa</p>
+    <header>
+        <p>Selamat Datang <?php echo $mahasiswa['nama']; ?></p>
+        <a href="<?php echo base_url('HomeMahasiswa/logout'); ?>"> logout</a>
+    </header>
+
+    <?php echo form_open_multipart('HomeMahasiswa/upload'); ?>
+        <input type="file" name="file_dokumen">
+        <button type="submit">Upload</button>
+    <?php echo form_close(); ?>
 </body>
 </html>

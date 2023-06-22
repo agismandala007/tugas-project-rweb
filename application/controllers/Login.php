@@ -27,9 +27,11 @@ class Login extends CI_Controller{
         $this->form_validation->set_rules('inputEmail', 'Email', 'required');
         $this->form_validation->set_rules('inputPassword', 'Password', 'required');
 
-        if ($this->form_validation->run() != false) {
+        if ($this->form_validation->run() != false) 
+        {
             $data = $this->M_login->verify($akun['email'], $akun['password']);
-            if ($data) {
+            if ($data) 
+            {
                 $this->session->set_userdata('id', $data['id']);
                 $this->session->set_userdata('email', $data['email']);
                 $this->session->set_userdata('tipe', $data['tipe']);
@@ -43,11 +45,15 @@ class Login extends CI_Controller{
                     redirect('HomeMahasiswa');
                 }
                 
-            } else {
-                $this->session->session_destroy();
+            } 
+            else 
+            {
+                session_destroy();
                 echo "Gagal Login";
             }
-        } else {
+        } 
+        else 
+        {
             $this->load->view('view_login');
         }
     }

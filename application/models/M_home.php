@@ -1,13 +1,16 @@
 <?php
 
-class M_home extends CI_model {
-    public function getData($data) {
+class M_home extends CI_model 
+{
+    public function getData($data) 
+    {
         $query = $this->db->like('nama', $data);
         $query = $this->db->get('mahasiswa');
         return $query->result();
     }
 
-    function dataMahasiswa() {
+    function dataMahasiswa() 
+    {
         $query = $this->db->get('mahasiswa');
         return $query->result();
     }
