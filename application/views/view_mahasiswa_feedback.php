@@ -19,9 +19,24 @@
         </ul>
     </section>
 
-    <?php echo form_open_multipart('HomeMahasiswa/upload'); ?>
-        <input type="file" name="file_dokumen">
-        <button type="submit">Upload</button>
-    <?php echo form_close(); ?>
+    <h2>Riwayat Revisi</h2>
+    <table>
+        <tr>
+            <td>No.</td>
+            <td>Nama</td>
+            <td>File</td>
+        </tr>
+        <?php
+            $i=0; 
+            foreach($dokumen as $row)
+            { ?>
+
+            <td><?php $i++; ?></td>
+            <td><?php echo $row->nama; ?></td>
+            <td><?php echo $row->data; ?></td>
+
+
+        <?php } ?>
+    </table>
 </body>
 </html>

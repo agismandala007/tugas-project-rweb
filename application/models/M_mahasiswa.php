@@ -17,4 +17,10 @@ class M_mahasiswa extends CI_Model
             'data' => $data['data']
         ));
     }
+
+    function getDoc ($data)
+    {
+        $query = $this->db->get_where('dokumen', array('id_mhs' => $data));
+        return $query->result();
+    }
 }

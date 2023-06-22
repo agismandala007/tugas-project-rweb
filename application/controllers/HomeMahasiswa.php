@@ -31,9 +31,15 @@ class HomeMahasiswa extends CI_Controller
         $this->load->view('view_mahasiswa', $data);
     }
 
+    function feedback ()
+    {
+        $data['dokumen'] = $this->M_mahasiswa->getDoc($this->session->userdata('id'));
+        $this->load->view('view_mahasiswa_feedback', $data);
+    }
+
     function upload ()
     {
-        $config['upload_path'] = realpath(APPPATH . "doc");;
+        $config['upload_path'] = realpath(APPPATH . "doc/mahasiswa/");;
         $config['allowed_types'] = 'doc|docx|pdf';
         $config['max_size'] = 10240; 
 
