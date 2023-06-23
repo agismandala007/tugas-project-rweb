@@ -19,6 +19,14 @@
         <p><?php echo $nama['nama']; ?></p>
         <a href="<?php echo base_url('homeDosen/logout') ?>">Logout</a>
     </header>
+    <section>
+        <nav>
+            <ul>
+                <li><a href="<?php echo base_url('HomeDosen'); ?>">Data Mahasiswa</a></li>
+                <li><a href="<?php echo base_url('DosenUpload'); ?>">Upload</a></li>
+            </ul>
+        </nav>
+    </section>
 
     <table>
         <tr>
@@ -28,14 +36,14 @@
             <td>Status</td>
             <td>Dokumen</td>
         </tr>
-        <?php $id=1;
+        <?php $i=1;
         foreach($mahasiswa as $row){ ?>
             <tr>
-                <td><?php echo $id++ ?></td>
+                <td><?php echo $i++ ?></td>
                 <td><?php echo $row->nim ?></td>
                 <td><?php echo $row->nama ?></td>
                 <td><?php echo $row->status ?></td>
-                <td><a href="<?php echo base_url('homedosen/upload') ?>">Upload</a> | <a href="<?php echo base_url('homedosen/download') ?>">Download</a></td>
+                <td><a href="<?php echo base_url('DosenUpload/index/' . $row->id); ?>">Upload</a> | <a href="<?php echo base_url('homedosen/download') ?>">Download</a></td>
             </tr>
         <?php } ?>
     </table>

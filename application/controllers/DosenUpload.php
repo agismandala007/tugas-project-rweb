@@ -1,14 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class HomeMahasiswa extends CI_Controller 
+class DosenUpload extends CI_Controller
 {
-    function __construct ()
+    function __construct()
     {
         parent::__construct();
         $this->load->library('session');
 
-        
-        if($this->session->userdata('tipe') != 'mahasiswa' && empty($this->session->userdata()))
+        if($this->session->userdata('tipe') != 'dosen' && empty($this->session->userdata('tipe')))
         {
             redirect('home');
         }
@@ -16,24 +15,22 @@ class HomeMahasiswa extends CI_Controller
         {
             $this->load->database();
             $this->load->library('form_validation');
-            $this->load->helper('date');
+            $this->load->model('M_dosen');
             $this->load->model('M_mahasiswa');
+            $this->load->model('M_upload');
         }
     }
 
-    function logout ()
+    function index($id)
     {
-        session_destroy();
-        redirect('home');
+        $id = $id;
+
+        $data['nama'] = $this->M_dosen->getNama($this->session->userdata('email'));
+        $data['namaMahasiswa'] = $this->M_upload->getNama($id);
+        $this->load->view('view_dosen_upload', $data);
     }
 
-    function index ()
-    {
-        $data['mahasiswa'] = $this->M_mahasiswa->getNama($this->session->userdata('email'));
-        $this->load->view('view_mahasiswa', $data);
-    }
-
-    function upload ()
+    function upload()
     {
         $config['upload_path'] = realpath(APPPATH . "doc/mahasiswa/");;
         $config['allowed_types'] = 'doc|docx|pdf';
@@ -49,8 +46,7 @@ class HomeMahasiswa extends CI_Controller
         else 
         {
             $data = $this->upload->data();
-            $id = $this->M_mahasiswa->getNama($this->session->userdata('email'));
-            $id = $id['id'];
+            $id = $this->id;
 
             $upload = array(
                 'id' => $id,
@@ -63,9 +59,5 @@ class HomeMahasiswa extends CI_Controller
             $this->M_mahasiswa->uploadFile($upload);
         }
         
-        $this->index();
     }
 }
-
-
-?>

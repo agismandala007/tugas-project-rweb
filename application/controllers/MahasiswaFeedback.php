@@ -8,7 +8,7 @@ class MahasiswaFeedback extends CI_Controller
         $this->load->library('session');
         $this->load->helper('download');
 
-        if ($this->session->userdata('tipe') != 'mahasiswa' && !empty($this->session->userdata('tipe')))
+        if ($this->session->userdata('tipe') != 'mahasiswa' && empty($this->session->userdata('tipe')))
         {
             redirect('home');
         }
