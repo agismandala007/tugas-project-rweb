@@ -6,7 +6,13 @@ class M_home extends CI_model
     {
         $query = $this->db->like('nama', $data);
         $query = $this->db->get('mahasiswa');
-        return $query->result();
+
+        if($query->num_rows() > 0)
+        {
+            return $query->result();
+        }
+
+        return null;
     }
 
     function dataMahasiswa() 

@@ -3,16 +3,15 @@ class M_download extends CI_Model
 {
     function getDocument($id)
     {
-        $query = $this->db->get_where('dokumen', array('id_mhs' => $id));
+        $query = $this->db->order_by('id', 'desc')
+                          ->get_where('dokumen', array('id_mhs' => $id), 1);
 
         if ($query->num_rows() > 0 )
         {
-            return $query->result();
+           return $query->result();
         }
-        else
-        {
-            return null;
-        }
+
+        return null;
     }
 
     function downloadDocument($id)
@@ -23,9 +22,8 @@ class M_download extends CI_Model
         {
             return $query->result();
         }
-        else
-        {
-            return null;
-        }
+
+        return null;
+
     }
 }

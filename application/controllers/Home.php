@@ -39,6 +39,7 @@ class Home extends CI_Controller
 	{
 		$nama = $this->input->post('cariNama');
 		$data['data'] = $this->M_home->getData($nama);
+	
 		$this->load->view('view_home', $data);
 	}
 

@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <style>
-        td, th {
+        td,
+        th {
             border: 1px solid black;
         }
     </style>
@@ -43,15 +44,22 @@
         </tr>
         <?php
         $i = 1;
-        foreach ($data as $row) { ?>
-            <tr>
-                <td><?php echo $i++ ?>.</td>
-                <td><?php echo $row->nim ?></td>
-                <td><?php echo $row->nama ?></td>
-                <td><?php echo $row->dosenPembimbing ?></td>
-                <td><?php echo $row->status ?></td>
-            </tr>
-        <?php } ?>
+        if (!empty($data)) {
+            foreach ($data as $row) {
+        ?>
+                <tr>
+                    <td><?php echo $i++ ?>.</td>
+                    <td><?php echo $row->nim ?></td>
+                    <td><?php echo $row->nama ?></td>
+                    <td><?php echo $row->dosenPembimbing ?></td>
+                    <td><?php echo $row->status ?></td>
+                </tr>
+        <?php
+            }
+        } else {
+            echo "<td colspan='5'>Data Tidak Ditemukan !</td>";
+        }
+        ?>
     </table>
 </body>
 

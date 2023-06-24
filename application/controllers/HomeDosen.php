@@ -17,7 +17,6 @@ class HomeDosen extends CI_Controller
         {
             $this->load->database();
             $this->load->model('M_dosen');
-            $this->load->model('M_feedback');
             $this->load->model('M_download');
         }
     }
