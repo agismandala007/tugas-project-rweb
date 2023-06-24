@@ -23,7 +23,6 @@
         <nav>
             <ul>
                 <li><a href="<?php echo base_url('HomeDosen'); ?>">Data Mahasiswa</a></li>
-                <li><a href="<?php echo base_url('DosenUpload'); ?>">Upload</a></li>
             </ul>
         </nav>
     </section>

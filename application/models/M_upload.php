@@ -2,9 +2,14 @@
 
 class M_upload extends CI_Model
 {
-    function getNama($id)
+    function uploadFile($data)
     {
-        $query = $this->db->get_where('mahasiswa', array('id' => $id));
-        return $query->result();
+        $this->db->insert('dokumen', array(
+            'id_mhs' => $data['id'],
+            'date' => $data['date'],
+            'nama' => $data['nama'],
+            'tipe' => $data['type'],
+            'data' => $data['data']
+        ));
     }
 }

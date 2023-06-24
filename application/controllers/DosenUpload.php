@@ -6,6 +6,7 @@ class DosenUpload extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->library('form_validation');
 
         if($this->session->userdata('tipe') != 'dosen' && empty($this->session->userdata('tipe')))
         {
@@ -14,23 +15,20 @@ class DosenUpload extends CI_Controller
         else
         {
             $this->load->database();
-            $this->load->library('form_validation');
-            $this->load->model('M_dosen');
-            $this->load->model('M_mahasiswa');
+            $this->load->model('M_login');
             $this->load->model('M_upload');
+            $this->load->model('M_mahasiswa');
         }
     }
 
     function index($id)
     {
-        $id = $id;
-
-        $data['nama'] = $this->M_dosen->getNama($this->session->userdata('email'));
-        $data['namaMahasiswa'] = $this->M_upload->getNama($id);
+        $data['nama'] = $this->M_login->getNama('dosen', $this->session->userdata('email'));
+        $data['namaMahasiswa'] = $this->M_mahasiswa->getNama($id);
         $this->load->view('view_dosen_upload', $data);
     }
 
-    function upload()
+    function upload($id)
     {
         $config['upload_path'] = realpath(APPPATH . "doc/mahasiswa/");;
         $config['allowed_types'] = 'doc|docx|pdf';
@@ -46,7 +44,7 @@ class DosenUpload extends CI_Controller
         else 
         {
             $data = $this->upload->data();
-            $id = $this->id;
+            $status = $this->input->post('inputStatus');
 
             $upload = array(
                 'id' => $id,
@@ -55,8 +53,11 @@ class DosenUpload extends CI_Controller
                 'type' => $data['file_type'],
                 'data' => file_get_contents($data['full_path'])
             );
+
+            $this->M_mahasiswa->setStatus($status, $id);
+            $this->M_upload->uploadFile($upload);
             
-            $this->M_mahasiswa->uploadFile($upload);
+            redirect('HomeDosen');
         }
         
     }

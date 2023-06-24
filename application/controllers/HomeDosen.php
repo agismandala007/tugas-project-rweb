@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class HomeDosen extends CI_Controller
 {
@@ -9,19 +9,17 @@ class HomeDosen extends CI_Controller
         $this->load->library('session');
         $this->load->helper('download');
 
-        if($this->session->userdata('tipe') != 'dosen' && empty($this->session->userdata()))
-        {
+        if ($this->session->userdata('tipe') != 'dosen' && empty($this->session->userdata())) {
             redirect('home');
-        }
-        else
-        {
+        } else {
             $this->load->database();
-            $this->load->model('M_dosen');
+            $this->load->model('M_login');
+            $this->load->model('M_mahasiswa');
             $this->load->model('M_download');
         }
     }
 
-    function logout ()
+    function logout()
     {
         session_destroy();
         redirect('home');
@@ -29,8 +27,8 @@ class HomeDosen extends CI_Controller
 
     function index()
     {
-        $data['nama'] = $this->M_dosen->getNama($this->session->userdata('email'));
-        $data['mahasiswa'] = $this->M_dosen->getMahasiswa($this->session->userdata('email'));
+        $data['nama'] = $this->M_login->getNama('dosen', $this->session->userdata('email'));
+        $data['mahasiswa'] = $this->M_mahasiswa->getMahasiswa($this->session->userdata('email'));
         $this->load->view('view_dosen', $data);
     }
 
@@ -43,12 +41,10 @@ class HomeDosen extends CI_Controller
     {
         $fileData = $this->M_download->getDocument($id);
 
-        if (isset($fileData))
-        {
+        if (isset($fileData)) {
             $filePath = realpath(APPPATH . 'doc/mahasiswa/') . '/' . $fileData[0]->nama;
 
-            if (file_exists($filePath)) 
-            {
+            if (file_exists($filePath)) {
                 $contentType = mime_content_type($filePath);
 
                 header('Content-Type: ' . $contentType);
@@ -57,16 +53,10 @@ class HomeDosen extends CI_Controller
 
                 // readfile($filePath);
                 force_download($filePath, null);
-            } 
-
-            else 
-            {
+            } else {
                 echo "File tidak ditemukan.";
             }
-        } 
-
-        else 
-        {
+        } else {
             echo "Data file tidak ditemukan.";
         }
     }

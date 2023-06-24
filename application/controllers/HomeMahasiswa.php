@@ -5,7 +5,9 @@ class HomeMahasiswa extends CI_Controller
     function __construct ()
     {
         parent::__construct();
+        $this->load->helper('date');
         $this->load->library('session');
+        $this->load->library('form_validation');
 
         
         if($this->session->userdata('tipe') != 'mahasiswa' && empty($this->session->userdata()))
@@ -15,9 +17,8 @@ class HomeMahasiswa extends CI_Controller
         else
         {
             $this->load->database();
-            $this->load->library('form_validation');
-            $this->load->helper('date');
-            $this->load->model('M_mahasiswa');
+            $this->load->model('M_login');
+            $this->load->model('M_upload');
         }
     }
 
@@ -29,7 +30,7 @@ class HomeMahasiswa extends CI_Controller
 
     function index ()
     {
-        $data['mahasiswa'] = $this->M_mahasiswa->getNama($this->session->userdata('email'));
+        $data['mahasiswa'] = $this->M_login->getNama('mahasiswa', $this->session->userdata('email'));
         $this->load->view('view_mahasiswa', $data);
     }
 
@@ -49,7 +50,7 @@ class HomeMahasiswa extends CI_Controller
         else 
         {
             $data = $this->upload->data();
-            $id = $this->M_mahasiswa->getNama($this->session->userdata('email'));
+            $id = $this->M_login->getNama('mahasiswa', $this->session->userdata('email'));
             $id = $id['id'];
 
             $upload = array(
@@ -60,12 +61,9 @@ class HomeMahasiswa extends CI_Controller
                 'data' => file_get_contents($data['full_path'])
             );
             
-            $this->M_mahasiswa->uploadFile($upload);
+            $this->M_upload->uploadFile($upload);
         }
         
         $this->index();
     }
 }
-
-
-?>
