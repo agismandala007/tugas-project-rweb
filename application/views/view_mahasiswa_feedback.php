@@ -42,7 +42,7 @@
                 <td><?php echo $i++ . "."; ?></td>
                 <td><?php echo $row->date; ?></td>
                 <td><?php echo $row->nama; ?></td>
-                <td><a href="<?php echo base_url('MahasiswaFeedback/downloadData') ?>">DownloadOK</a></td>
+                <td><a href="<?php echo base_url('MahasiswaFeedback/download/' . $row->id) ?>">Download</a></td>
             </tr>
         <?php } ?>
     </table>

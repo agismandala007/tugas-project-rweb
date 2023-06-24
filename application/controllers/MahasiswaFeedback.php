@@ -15,7 +15,7 @@ class MahasiswaFeedback extends CI_Controller
         else
         {
             $this->load->database();
-            $this->load->model('M_feedback');
+            $this->load->model('M_download');
             $this->load->model('M_mahasiswa');
         }
     }
@@ -23,15 +23,15 @@ class MahasiswaFeedback extends CI_Controller
     function index ()
     {
         $data['mahasiswa'] = $this->M_mahasiswa->getNama($this->session->userdata('email'));
-        $data['feedback'] = $this->M_feedback->getDokumen($data['mahasiswa']['id']);
+        $data['feedback'] = $this->M_download->getDocument($data['mahasiswa']['id']);
 
         $this->load->view('view_mahasiswa_feedback', $data);
     }
 
-    function downloadData()
+    function download ($id)
     {
         $data['mahasiswa'] = $this->M_mahasiswa->getNama($this->session->userdata('email'));
-        $fileData = $this->M_feedback->GetDokumen($data['mahasiswa']['id']);
+        $fileData = $this->M_download->downloadDocument($id);
 
         if (isset($fileData))
         {

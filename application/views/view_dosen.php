@@ -43,7 +43,7 @@
                 <td><?php echo $row->nim ?></td>
                 <td><?php echo $row->nama ?></td>
                 <td><?php echo $row->status ?></td>
-                <td><a href="<?php echo base_url('DosenUpload/index/' . $row->id); ?>">Upload</a> | <a href="<?php echo base_url('homedosen/download') ?>">Download</a></td>
+                <td><a href="<?php echo base_url('DosenUploadz/index/' . $row->id); ?>">Upload</a> | <a href="<?php echo base_url('homedosen/download/' . $row->id); ?>">Download</a></td>
             </tr>
         <?php } ?>
     </table>

@@ -7,6 +7,7 @@ class HomeDosen extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->helper('download');
 
         if($this->session->userdata('tipe') != 'dosen' && empty($this->session->userdata()))
         {
@@ -16,6 +17,8 @@ class HomeDosen extends CI_Controller
         {
             $this->load->database();
             $this->load->model('M_dosen');
+            $this->load->model('M_feedback');
+            $this->load->model('M_download');
         }
     }
 
@@ -37,36 +40,35 @@ class HomeDosen extends CI_Controller
         $this->load->view('DosenUpload/' . $id);
     }
 
-    function download()
+    function download($id)
     {
-        $config['upload_path'] = realpath(APPPATH . "doc/mahasiswa/");;
-        $config['allowed_types'] = 'doc|docx|pdf';
-        $config['max_size'] = 10240; 
+        $fileData = $this->M_download->getDocument($id);
 
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('file_dokumen')) 
+        if (isset($fileData))
         {
-            $error = $this->upload->display_errors();
-            echo $error;
+            $filePath = realpath(APPPATH . 'doc/mahasiswa/') . '/' . $fileData[0]->nama;
+
+            if (file_exists($filePath)) 
+            {
+                $contentType = mime_content_type($filePath);
+
+                header('Content-Type: ' . $contentType);
+                header('Content-Disposition: attachment; filename=' . $fileData['nama']);
+                header('Content-Length: ' . filesize($filePath));
+
+                // readfile($filePath);
+                force_download($filePath, null);
+            } 
+
+            else 
+            {
+                echo "File tidak ditemukan.";
+            }
         } 
+
         else 
         {
-            $data = $this->upload->data();
-            $id = $this->M_mahasiswa->getNama($this->session->userdata('email'));
-            $id = $id['id'];
-
-            $upload = array(
-                'id' => $id,
-                'date' => date('Y-m-d'),
-                'nama' => $data['file_name'],
-                'type' => $data['file_type'],
-                'data' => file_get_contents($data['full_path'])
-            );
-            
-            $this->M_mahasiswa->uploadFile($upload);
+            echo "Data file tidak ditemukan.";
         }
-        
-        $this->index();
     }
 }
