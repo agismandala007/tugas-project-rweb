@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
     <style>
         td,
@@ -18,30 +20,32 @@
 
 <body>
     <header>
-        <div>
-            <?php echo form_open('home/cari'); ?>
-            <input type="text" name="cariNama" placeholder="Cari Berdasarkan Nama">
-            <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-                </svg></button>
-            <?php echo form_close(); ?>
-
-            <div>
-                <a href="<?php echo base_url('login/index'); ?>">Login</a>
-                <a href="<?php echo base_url('registrasi/index'); ?>">Register</a>
-            </div>
+    <!-- navbar -->
+    <nav class="navbar" data-bs-theme="dark" style="background-color: #6851EE;">
+        <div class="container-fluid">
+            <a class="navbar-brand">Navbar</a>
+            <div class="d-flex" role="search">
+                <a class="btn" href="<?php echo base_url('login/index'); ?>" style="background-color: #6851EE; color: white;">Login</a>
+                <a class="btn" href="<?php echo base_url('registrasi/index'); ?>" style="background-color: #6851EE; color: white;">Register</a>
+                </div>
         </div>
-    </header>
+    </nav>
+    </header><br><br><br>
 
-    <table>
-        <tr>
-            <td>No.</td>
-            <td>Nim</td>
-            <td>Nama</td>
-            <td>Dosen Pembimbing</td>
-            <td>Status</td>
-        </tr>
+    <div class="container">
+    <!-- table and search -->
+    <div class="table-responsive-sm">
+    <table class="table table-hover table-bordered table-striped" id="table">
+        <thead class="table-info">
+            <tr>
+                <td>No.</td>
+                <td>Nim</td>
+                <td>Nama</td>
+                <td>Dosen Pembimbing</td>
+                <td>Status</td>
+            </tr>
+        </thead>
+        <tbody>
         <?php
         $i = 1;
         if (!empty($data)) {
@@ -60,7 +64,18 @@
             echo "<td colspan='5'>Data Tidak Ditemukan !</td>";
         }
         ?>
+        </tbody>
     </table>
+    </div>
+    </div>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable();
+    });
+</script>
 </html>
