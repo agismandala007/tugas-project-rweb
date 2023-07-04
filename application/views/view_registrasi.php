@@ -15,7 +15,7 @@
     <!-- navbar -->
     <nav class="navbar" data-bs-theme="dark" style="background-color: #6851EE;">
         <div class="container-fluid">
-            <a href="<?php echo base_url('home') ?>" class="navbar-brand">Navbar</a>
+            <a href="<?php echo base_url('home') ?>" class="navbar-brand">Informatic Monitoring</a>
             <div class="d-flex" role="search">
                 <a class="btn" href="<?php echo base_url('login/index'); ?>" style="background-color: #6851EE; color: white;">Login</a>
                 <a class="btn" href="<?php echo base_url('registrasi/index'); ?>" style="background-color: #6851EE; color: white;">Register</a>

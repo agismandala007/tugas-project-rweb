@@ -34,7 +34,6 @@
       color: #f8f9fa;
     }
   </style>
-  </style>
 </head>
 <body>
      <!-- navbar -->
@@ -48,32 +47,27 @@
             <i class="bi bi-person-circle">  <?php echo $mahasiswa['nama']; ?></i>    
             </div>
         </div>
-
-        
-    
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Collapsed content</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-
-  <div class="offcanvas-body p-4">
-    <hr class="border border-light border-3 opacity-75">
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <h6 class="text-body-secondary"><i class="bi bi-play-fill"></i> <a href="<?php echo base_url('HomeMahasiswa'); ?>">Upload</a></h6>
-      <h6 class="text-body-secondary"><i class="bi bi-play-fill"></i> <a href="<?php echo base_url('MahasiswaFeedback'); ?>">Feedback</a></h6>
-    </div>
-
-    <div class="d-grid gap-2 col-9 mx-auto"><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <h5 class="text-body-secondary"><i class="bi bi-box-arrow-right"></i> <a href="<?php echo base_url('HomeMahasiswa/logout'); ?>"> Logout</a></h5>
-    </div>
-  </div>
-</div>
-
-    </nav>
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Informatic Monitoring</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body p-4">
+            <hr class="border border-light border-3 opacity-75">
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <h6 class="text-body-secondary"><i class="bi bi-play-fill"></i> <a href="<?php echo base_url('HomeMahasiswa'); ?>">Upload</a></h6>
+              <h6 class="text-body-secondary"><i class="bi bi-play-fill"></i> <a href="<?php echo base_url('MahasiswaFeedback'); ?>">Feedback</a></h6>
+            </div>
+            <div class="d-grid gap-2 col-9 mx-auto"><br><br><br><br><br><br><br><br><br><br><br>
+              <hr class="border border-light border-1 opacity-75">
+              <h5 class="text-body-secondary"><i class="bi bi-box-arrow-right"></i> <a href="<?php echo base_url('HomeMahasiswa/logout'); ?>"> Logout</a></h5>
+            </div>
+          </div>
+        </div>
+      </nav>
 
     <div class="container ">
-    <!-- form login -->
+    <!-- form upload -->
     <div class="card border-primary mb-6 position-absolute top-50 start-50 translate-middle shadow-lg p-3 bg-body-tertiary rounded w-50" style="width: 18rem;">
         <div class="card-body">
             <div class="position-absolute top-0 start-50 translate-middle-x">
