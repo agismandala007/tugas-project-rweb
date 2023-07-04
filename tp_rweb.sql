@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2023 at 07:25 PM
+-- Generation Time: Jul 04, 2023 at 05:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,7 +44,8 @@ INSERT INTO `akun` (`id`, `email`, `password`, `tipe`) VALUES
 (3, 'fidia@gmail.com', '123', 'mahasiswa'),
 (8, 'tedy@email.com', '1234', 'dosen'),
 (9, 'taufiq@gmail.com', '123', 'dosen'),
-(10, 'supriyanto@gmail.com', '123', 'dosen');
+(10, 'supriyanto@gmail.com', '123', 'dosen'),
+(13, 'hayu@gmail.com', '123', 'mahasiswa');
 
 -- --------------------------------------------------------
 
@@ -113,7 +114,7 @@ CREATE TABLE `mahasiswa` (
   `email` varchar(255) NOT NULL,
   `dosenPembimbing` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `status` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -123,7 +124,8 @@ CREATE TABLE `mahasiswa` (
 INSERT INTO `mahasiswa` (`id`, `nim`, `nama`, `email`, `dosenPembimbing`, `password`, `status`) VALUES
 (4, 2000018075, 'Agis Satria Mandala', 'agis@gmail.com', 'Drs. Tedy Setiadi, M.T.', '123', ''),
 (5, 2000018430, 'Muhammad Rizki Almansyah', 'rizki@gmail.com', 'Drs. Tedy Setiadi, M.T.', '123', ''),
-(7, 2000018224, 'Fidia Fajri Utami', 'fidia@gmail.com', 'Taufiq Ismail, S.T., M.Cs.', '123', '');
+(7, 2000018224, 'Fidia Fajri Utami', 'fidia@gmail.com', 'Taufiq Ismail, S.T., M.Cs.', '123', ''),
+(13, 2000018077, 'Hayyu', 'hayu@gmail.com', 'Taufiq Ismail, S.T., M.Cs.', '123', NULL);
 
 --
 -- Triggers `mahasiswa`
@@ -136,7 +138,7 @@ $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `tambah_akun_mahasiswa` AFTER INSERT ON `mahasiswa` FOR EACH ROW BEGIN
-    INSERT INTO akun (email, password)
+    INSERT INTO akun (email, password, tipe)
     VALUES (NEW.email, NEW.password, 'mahasiswa');
 END
 $$
@@ -178,6 +180,12 @@ ALTER TABLE `mahasiswa`
 --
 
 --
+-- AUTO_INCREMENT for table `akun`
+--
+ALTER TABLE `akun`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT for table `dokumen`
 --
 ALTER TABLE `dokumen`
@@ -193,7 +201,7 @@ ALTER TABLE `dosen`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

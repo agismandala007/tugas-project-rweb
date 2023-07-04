@@ -23,8 +23,7 @@ class Registrasi extends CI_Controller{
             'nama' => $this->input->post('inputNama'),
             'email' => $this->input->post('inputEmail'),
             'dosenPembimbing' => $this->input->post('inputDosen'),
-            'password' => $this->input->post('inputPassword'),
-            'status' => ''
+            'password' => $this->input->post('inputPassword')
         );
 
         $this->M_registrasi->addAkun($akun);
