@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,14 @@
     <title>Feedback</title>
 
     <style>
-        tr, td{
+        tr,
+        td {
             border: 1px solid black;
         }
     </style>
 
 </head>
+
 <body>
     <header>
         <p><?php echo $mahasiswa['nama']; ?></p>
@@ -35,16 +38,20 @@
             <td>File</td>
         </tr>
         <?php
-            $i=1; 
-            foreach($feedback as $row)
-            { ?>
-            <tr>
-                <td><?php echo $i++ . "."; ?></td>
-                <td><?php echo $row->date; ?></td>
-                <td><?php echo $row->nama; ?></td>
-                <td><a href="<?php echo base_url('MahasiswaFeedback/download/' . $row->id) ?>">Download</a></td>
-            </tr>
-        <?php } ?>
+        if (!empty($feedback)) {
+            $i = 1;
+            foreach ($feedback as $row) { ?>
+                <tr>
+                    <td><?php echo $i++ . "."; ?></td>
+                    <td><?php echo $row->date; ?></td>
+                    <td><?php echo $row->nama; ?></td>
+                    <td><a href="<?php echo base_url('MahasiswaFeedback/download/' . $row->id) ?>">Download</a></td>
+                </tr>
+        <?php }
+        } else {
+            echo "<td colspan='5'>Data Tidak Ditemukan !</td>";
+        } ?>
     </table>
 </body>
+
 </html>
