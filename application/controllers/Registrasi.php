@@ -27,5 +27,7 @@ class Registrasi extends CI_Controller{
         );
 
         $this->M_registrasi->addAkun($akun);
+        echo "<script>alert('Akun berhasil ditambahkan'); window.location.href = '" . base_url('Login') . "';</script>";
+
     }
 }
