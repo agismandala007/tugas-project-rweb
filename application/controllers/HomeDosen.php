@@ -9,7 +9,7 @@ class HomeDosen extends CI_Controller
         $this->load->library('session');
         $this->load->helper('download');
 
-        if ($this->session->userdata('tipe') != 'dosen' && empty($this->session->userdata())) {
+        if ($this->session->userdata('tipe') != 'dosen' || empty($this->session->userdata())) {
             redirect('home');
         } else {
             $this->load->database();

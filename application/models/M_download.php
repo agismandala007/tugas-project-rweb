@@ -13,6 +13,12 @@ class M_download extends CI_Model
         return null;
     }
 
+    function getAll($id)
+    {
+        $query = $this->db->get_where('dokumen', array('id_mhs' => $id));
+        return $query->result();
+    }
+
     function downloadDocument($id)
     {
         $query = $this->db->get_where('dokumen', array('id' => $id));

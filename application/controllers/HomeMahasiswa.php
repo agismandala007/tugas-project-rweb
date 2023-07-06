@@ -10,9 +10,9 @@ class HomeMahasiswa extends CI_Controller
         $this->load->library('form_validation');
 
         
-        if($this->session->userdata('tipe') != 'mahasiswa' && empty($this->session->userdata()))
+        if($this->session->userdata('tipe') != 'mahasiswa' || empty($this->session->userdata()))
         {
-            redirect('home');
+            redirect('Home');
         }
         else
         {

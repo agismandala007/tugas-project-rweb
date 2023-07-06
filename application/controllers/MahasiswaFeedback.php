@@ -20,7 +20,7 @@ class MahasiswaFeedback extends CI_Controller
     function index()
     {
         $data['mahasiswa'] = $this->M_login->getNama('mahasiswa', $this->session->userdata('email'));
-        $data['feedback'] = $this->M_download->getDocument($data['mahasiswa']['id']);
+        $data['feedback'] = $this->M_download->getAll($data['mahasiswa']['id']);
 
         $this->load->view('view_mahasiswa_feedback', $data);
     }
