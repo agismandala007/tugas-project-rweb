@@ -1,88 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <title>Document</title>
-    <style>
-    a {
-        text-decoration: none;
-        color: white;
-    }
-    .offcanvas-header {
-      background-color: #6851EE;
-    }
-
-    .offcanvas-header .offcanvas-title {
-      border-bottom: 1px solid white;
-      padding-bottom: 5px;
-    }
-
-    .offcanvas-body {
-      background-color: #6851EE;
-    }
-
-    .offcanvas-title,
-    .text-body-emphasis {
-      color: white;
-    }
-
-    .text-body-secondary {
-      color: #f8f9fa;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring Informatic</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>./assets//img/svg/logo.svg" type="image/x-icon">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>./assets/css/style.css">
 </head>
-<body>
-     <!-- navbar -->
-     <nav class="navbar" data-bs-theme="dark" style="background-color: #6851EE;">
-        <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-            aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="d-flex" style="color: white;">
-            <i class="bi bi-person-circle">  <?php echo $mahasiswa['nama']; ?></i>    
-            </div>
-        </div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Informatic Monitoring</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body p-4">
-            <hr class="border border-light border-3 opacity-75">
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <h6 class="text-body-secondary"><i class="bi bi-play-fill"></i> <a href="<?php echo base_url('HomeMahasiswa'); ?>">Upload</a></h6>
-              <h6 class="text-body-secondary"><i class="bi bi-play-fill"></i> <a href="<?php echo base_url('MahasiswaFeedback'); ?>">Feedback</a></h6>
-            </div>
-            <div class="d-grid gap-2 col-9 mx-auto"><br><br><br><br><br><br><br><br><br><br><br>
-              <hr class="border border-light border-1 opacity-75">
-              <h5 class="text-body-secondary"><i class="bi bi-box-arrow-right"></i> <a href="<?php echo base_url('HomeMahasiswa/logout'); ?>"> Logout</a></h5>
-            </div>
-          </div>
-        </div>
-      </nav>
 
-    <div class="container ">
-    <!-- form upload -->
-    <div class="card border-primary mb-6 position-absolute top-50 start-50 translate-middle shadow-lg p-3 bg-body-tertiary rounded w-50" style="width: 18rem;">
-        <div class="card-body">
-            <div class="position-absolute top-0 start-50 translate-middle-x">
-                <h4>UPLOAD FILE</h4>
-            </div><br>
+<body>
+  <div class="layer"></div>
+    <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+  <div class="page-flex">
+  <!-- ! Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-start">
+        <div class="sidebar-head">
+            <a href="<?php echo base_url('MahasiswaFeedback'); ?>" class="logo-wrapper" title="Home">
+                <span class="sr-only">Home</span>
+                <span class="icon logo" aria-hidden="true"></span>
+                <div class="logo-text">
+                    <span class="logo-title">Informatic</span>
+                    <span class="logo-subtitle">Monitoring</span>
+                </div>
+            </a>
+            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                <span class="sr-only">Toggle menu</span>
+                <span class="icon menu-toggle" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="sidebar-body">
+            <ul class="sidebar-body-menu">
+                <li>
+                    <a class="active" href="<?php echo base_url('HomeMahasiswa'); ?>"><span class="icon document" aria-hidden="true"></span> Submit Thesis</a>
+                </li>
+                <li>
+                    <a href="<?php echo base_url('MahasiswaFeedback'); ?>"><span class="icon paper" aria-hidden="true"></span> Feedback Dosen</a>
+                </li>
+                <ul class="cat-sub-menu"></ul> 
+            </ul>
+            <ul class="sidebar-body-menu"></ul>         
+        </div>
+    </div>
+    <div class="sidebar-footer">
+      <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"><a href="<?php echo base_url('HomeMahasiswa/logout'); ?>"> Logout</a></i>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <!-- ! Main nav -->
+    <nav class="main-nav--bg">
+      <div class="container main-nav">
+        <div class="main-nav-start">
+          <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
+            <span class="sr-only">Switch theme</span>
+            <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+            <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="main-nav-end">
+          <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+            <span class="sr-only">Toggle menu</span>
+            <span class="icon menu-toggle--gray" aria-hidden="true"></span>
+          </button>
+          <div class="nav-user-wrapper">
+            <div class="stat-cards-info__num">
+              <i class="fa-regular fa-user">  <?php echo $mahasiswa['nama']; ?></i>    
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- ! Main -->
+    <main class="main users chart-page" id="skip-target">
+      <div class="container">
+        <h2 class="main-title">Upload File</h2>
+        <!-- form upload -->
+        <div class="  col-xl-6">
+          <article class="stat-cards-item">
             <?php echo form_open_multipart('HomeMahasiswa/upload'); ?>
             <div class="mb-3">
-                <input class="form-control" type="file" name="file_dokumen" id="formFile">
+                <input class="form-control w-10" type="file" name="file_dokumen" id="formFile">
             </div>
             <hr>
             <button class="btn btn-primary" type="submit">Upload</button>
             <?php echo form_close(); ?>
+          </article>
         </div>
+      </div>
+    </main>
+
+    <!-- ! Footer -->
+    <footer class="footer">
+      <div class="container footer--flex">
+        <div class="footer-start">
+          <p>2023 © Informatic Monitoring - All right reversed</p>
         </div>
-    </div>
+      </div>
+    </footer>
 </body>
+
+<!-- Chart library -->
+<script src="<?php echo base_url(); ?>./assets/plugins/chart.min.js"></script>
+<!-- Icons library -->
+<script src="<?php echo base_url(); ?>assets/plugins/feather.min.js"></script>
+<!-- Custom scripts -->
+<script src="<?php echo base_url(); ?>assets/js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/8d3ba567bd.js" crossorigin="anonymous"></script>
+</body>
+
 </html>
