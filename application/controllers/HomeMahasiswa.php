@@ -44,8 +44,7 @@ class HomeMahasiswa extends CI_Controller
 
         if (!$this->upload->do_upload('file_dokumen')) 
         {
-            $error = $this->upload->display_errors();
-            echo $error;
+            echo "<script>alert('Tipe file yang anda masukan salah, mohon hanya pdf, docx dan doc saja'); window.location.href = '" . base_url('HomeMahasiswa') . "';</script>";
         } 
         else 
         {
@@ -62,6 +61,7 @@ class HomeMahasiswa extends CI_Controller
             );
             
             $this->M_upload->uploadFile($upload);
+            echo "<script>alert('Berhasil Disimpan'); window.location.href = '" . base_url('HomeMahasiswa') . "';</script>";
         }
         
         $this->index();

@@ -54,10 +54,10 @@ class HomeDosen extends CI_Controller
                 // readfile($filePath);
                 force_download($filePath, null);
             } else {
-                echo "File tidak ditemukan.";
+                echo "<script>alert('File tidak Ditemukan!!'); window.location.href = '" . base_url('HomeDosen') . "';</script>";
             }
         } else {
-            echo "Data file tidak ditemukan.";
+            echo "<script>alert('Data tidak Ditemukan!!'); window.location.href = '" . base_url('HomeDosen') . "';</script>";
         }
     }
 }

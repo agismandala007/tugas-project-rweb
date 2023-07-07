@@ -49,7 +49,7 @@ class Login extends CI_Controller{
             else 
             {
                 session_destroy();
-                echo "<script>alert('Akun tidak ditemukan'); window.location.href = '" . base_url('Login') . "';</script>";
+                echo "<script>alert('Email atau Password salah!!'); window.location.href = '" . base_url('Login') . "';</script>";
             }
         } 
         else 

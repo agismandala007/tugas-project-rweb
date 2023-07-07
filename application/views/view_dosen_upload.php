@@ -110,6 +110,9 @@
                             <select name="inputStatus" class="form-select w-25" aria-label="Default select example">
                                 <option value="Bab 1 Revisi">Bab 1 Revisi</option>
                                 <option value="Bab 2 Revisi">Bab 2 Revisi</option>
+                                <option value="Bab 3 Revisi">Bab 3 Revisi</option>
+                                <option value="Bab 4 Revisi">Bab 4 Revisi</option>
+                                <option value="Bab 5 Revisi">Bab 5 Revisi</option>
                                 <option value="Selesai">Selesai</option>
                             </select>
                         </td>
