@@ -8,6 +8,7 @@ class Registrasi extends CI_Controller{
         $this->load->database();
         $this->load->library('form_validation');
         $this->load->model('M_registrasi');
+        $this->load->library('encryption');
     }
 
     function index()
@@ -23,7 +24,7 @@ class Registrasi extends CI_Controller{
             'nama' => $this->input->post('inputNama'),
             'email' => $this->input->post('inputEmail'),
             'dosenPembimbing' => $this->input->post('inputDosen'),
-            'password' => $this->input->post('inputPassword')
+            'password' => md5($this->input->post('inputPassword'))
         );
 
         $this->M_registrasi->addAkun($akun);
