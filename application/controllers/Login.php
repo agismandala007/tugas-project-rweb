@@ -8,6 +8,7 @@ class Login extends CI_Controller{
         $this->load->database();
         $this->load->library('form_validation');
         $this->load->library('session');
+        $this->load->library('encryption');
         $this->load->model('M_login');
     }
 
@@ -21,7 +22,7 @@ class Login extends CI_Controller{
     {
         $akun = array(
             'email' => $this->input->post('inputEmail'),
-            'password' => $this->input->post('inputPassword')
+            'password' => md5($this->input->post('inputPassword'))
         );
 
         $this->form_validation->set_rules('inputEmail', 'Email', 'required');
